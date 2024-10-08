@@ -18,7 +18,9 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <p>{message}</p>
+        <div class="wrapper">
+          <h1>coming soon<span class="dot">.</span></h1>
+        </div>
       </header>
     </div>
   );
