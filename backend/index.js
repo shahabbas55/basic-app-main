@@ -1,14 +1,13 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 
 const app = express();
 const port = process.env.PORT || 5000;
 
 app.use(cors());
 
-app.get('/', (req, res) => {
-  res.send('Hello world !');
-});
+
 
 app.get('/api/message', (req, res) => {
   res.json({ message: 'Hello from the backend test api!' });
@@ -16,10 +15,11 @@ app.get('/api/message', (req, res) => {
 
 // Serve React App
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '/build'))); // Adjust 'client/build' to your actual build folder
+  // Adjust the path to your build folder
+  app.use(express.static(path.join(__dirname, 'build'))); // Assuming build is at the root level
 
   app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '/build', 'index.html'));
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
   });
 }
 
