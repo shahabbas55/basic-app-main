@@ -13,15 +13,10 @@ app.get('/api/message', (req, res) => {
   res.json({ message: 'Hello from the backend test api!' });
 });
 
-// Serve React App
-if (process.env.NODE_ENV === 'production') {
-  // Adjust the path to your build folder
-  app.use(express.static(path.join(__dirname, 'build'))); // Assuming build is at the root level
-
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'build', 'index.html'));
-  });
-}
+app.use(express.static("./frontend/build"));
+app.get("*",(req, res)=>{
+  res.sendFile(path.resolve(__dirname,"frontend","build","index.html"))
+})
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
