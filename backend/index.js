@@ -11,7 +11,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/api/message', (req, res) => {
-  res.json({ message: 'Hello from the backend!' });
+  res.json({ message: 'Hello from the backend test api!' });
 });
 
 

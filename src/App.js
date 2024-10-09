@@ -6,7 +6,7 @@ function App() {
   const [message, setMessage] = useState('');
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/message')
+    axios.get('https://fftechnologies-eff0cjfuhndfczgr.canadacentral-01.azurewebsites.net/api/message')
       .then(response => {
         setMessage(response.data.message);
       })
