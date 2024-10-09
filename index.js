@@ -7,7 +7,9 @@ const port = process.env.PORT || 5000;
 
 app.use(cors());
 
-
+app.get('/', (req, res) => {
+  res.json({ message: 'FF Technologies Website' });
+});
 
 app.get('/api/message', (req, res) => {
   res.json({ message: 'Hello from the backend test api!' });
