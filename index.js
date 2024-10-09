@@ -15,8 +15,9 @@ app.get('/api/message', (req, res) => {
 
 app.use(express.static("./frontend/build"));
 app.get("*",(req, res)=>{
-  res.sendFile(path.resolve(__dirname,"frontend","build","index.html"))
-})
+  res.sendFile(path.join(__dirname,"frontend","build","index.html"))
+});
+
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
