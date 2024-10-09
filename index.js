@@ -11,9 +11,9 @@ app.use(cors());
 app.use(express.static(path.join(__dirname, 'frontend', 'build')));
 
 
-// app.get('/api/message', (req, res) => {
-//   res.json({ message: 'Hello from the backend test api!' });
-// });
+app.get('/api/message', (req, res) => {
+  res.json({ message: 'Hello from the backend test api!' });
+});
 
 // The catch-all handler for any request that doesn't match above
 app.get('*', (req, res) => {

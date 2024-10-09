@@ -3,7 +3,7 @@ import axios from 'axios';
 import './App.css';
 
 function App() {
-  const [message, setMessage] = useState('');
+  // const [message, setMessage] = useState('');
 
   // useEffect(() => {
   //   axios.get('https://fftechnologies-eff0cjfuhndfczgr.canadacentral-01.azurewebsites.net/api/message')
