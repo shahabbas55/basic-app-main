@@ -16,7 +16,7 @@ function App() {
   //     });
   // }, []);
 
-  const targetDate = new Date("2024-12-31T00:00:00"); // Set your target date here
+  const targetDate = new Date("2025-06-30T00:00:00"); // Set your target date here
   const [timeLeft, setTimeLeft] = useState({});
 
   useEffect(() => {
