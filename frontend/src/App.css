@@ -44,7 +44,7 @@ html, body {
 }
 
 body {
-  background: url('https://i.ibb.co/pbNgdqj/bg.jpg') no-repeat center top;
+  background: linear-gradient(to top, #09203f 0%, #537895 100%);
   background-size: cover;
   min-height: 100vh;
   display: flex;
