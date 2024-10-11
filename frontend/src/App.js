@@ -16,85 +16,84 @@ function App() {
   //     });
   // }, []);
 
-  const targetDate = new Date("2025-06-30T00:00:00"); // Set your target date here
-  const [timeLeft, setTimeLeft] = useState({});
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      const now = new Date();
-      const distance = targetDate - now;
+    const countDown = () => {
+      const futureDate = new Date("11 nov 2024");
+      const currentDate = new Date();
+      const myDate = futureDate - currentDate;
 
-      if (distance < 0) {
-        clearInterval(timer);
-        setTimeLeft({});
-        return;
-      }
-
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      const days = Math.floor(myDate / 1000 / 60 / 60 / 24);
+      const hours = Math.floor((myDate / 1000 / 60 / 60) % 24);
+      const minutes = Math.floor((myDate / 1000 / 60) % 60);
+      const seconds = Math.floor((myDate / 1000) % 60);
 
       setTimeLeft({ days, hours, minutes, seconds });
-    }, 1000);
+    };
 
-    return () => clearInterval(timer);
-  }, [targetDate]);
+    countDown(); // Initial call to set the initial values
+    const intervalId = setInterval(countDown, 1000);
+
+    return () => clearInterval(intervalId); // Cleanup on unmount
+  }, []);
 
   return (
           <>
-          <div style={styles.container}>
-                <h1>Coming Soon</h1>
-                <div style={styles.timer}>
-                  {timeLeft.days !== undefined ? (
-                    <>
-                      <div style={styles.timeBlock}>
-                        <span>{timeLeft.days}</span>
-                        <span>Days</span>
-                      </div>
-                      <div style={styles.timeBlock}>
-                        <span>{timeLeft.hours}</span>
-                        <span>Hours</span>
-                      </div>
-                      <div style={styles.timeBlock}>
-                        <span>{timeLeft.minutes}</span>
-                        <span>Minutes</span>
-                      </div>
-                      <div style={styles.timeBlock}>
-                        <span>{timeLeft.seconds}</span>
-                        <span>Seconds</span>
-                      </div>
-                    </>
-                  ) : (
-                    <h2>We're Live!</h2>
-                  )}
+    <div className="container text-center">
+      <header>
+        <div className="header_area">
+          <div className="row">
+            <div className="col-xl-12 d-flex justify-content-center">
+              {/* You can add header content here if needed */}
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <section>
+        <div className="row" style={{ marginTop: '200px' }}>
+          <div className="col-xl-12">
+            <div className="tagline p-4 mt-4">
+              <h1>Coming Soon</h1>
+            </div>
+           
+          </div>
+
+          <div className="col-xl-12">
+            <div className="wrapper">
+              <div className="countdown-container d-flex justify-content-center">
+                <div>
+                  <p id="days" className="big-text">{timeLeft.days}</p>
+                  <span>Days</span>
+                </div>
+                <div>
+                  <p id="hours" className="big-text">{timeLeft.hours}</p>
+                  <span>Hours</span>
+                </div>
+                <div>
+                  <p id="min" className="big-text">{timeLeft.minutes}</p>
+                  <span>Min</span>
+                </div>
+                <div>
+                  <p id="sec" className="big-text">{timeLeft.seconds}</p>
+                  <span>Sec</span>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div> 
           </>
   );
 }
-const styles = {
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: '100vh',
-    backgroundColor: '#f0f0f0',
-    textAlign: 'center',
-  },
-  timer: {
-    display: 'flex',
-    justifyContent: 'center',
-    marginTop: '20px',
-  },
-  timeBlock: {
-    margin: '0 10px',
-    padding: '20px',
-    border: '2px solid #333',
-    borderRadius: '10px',
-    backgroundColor: '#fff',
-  },
-};
+
+
 
 export default App;
