@@ -25,7 +25,7 @@ function App() {
 
   useEffect(() => {
     const countDown = () => {
-      const futureDate = new Date("11 nov 2024");
+      const futureDate = new Date("06 dec 2024");
       const currentDate = new Date();
       const myDate = futureDate - currentDate;
 
